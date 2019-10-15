@@ -1,0 +1,4 @@
+#!/bin/bash
+
+cd /opt/rr3/application
+./doctrine orm:schema-tool:create

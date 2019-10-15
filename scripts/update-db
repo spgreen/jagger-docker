@@ -1,0 +1,5 @@
+#!/bin/bash
+
+cd /opt/rr3/application
+./doctrine orm:schema-tool:update --force
+./doctrine orm:generate-proxies
