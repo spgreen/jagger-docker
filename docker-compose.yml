@@ -26,17 +26,17 @@ services:
       - "MYSQL_PASSWORD=${MYSQL_PASSWORD}"
     restart: always
 
-#  smtp_relay:
-#    image: juanluisbaptiste/postfix
-#    container_name: smtp_relay
-#    volumes:
-#      - "/etc/localtime:/etc/localtime:ro"
-#    environment:
-#      - "SERVER_HOSTNAME=helpdesk.singaren.net.sg"
-#      - "SMTP_SERVER=${SMTP_SERVER}"
-#      - "SMTP_USERNAME=${SMTP_USERNAME}"
-#      - "SMTP_PASSWORD=${SMTP_PASSWORD}"
-#    restart: always
+  smtp_relay:
+    image: juanluisbaptiste/postfix
+    container_name: smtp_relay
+    volumes:
+      - "/etc/localtime:/etc/localtime:ro"
+    environment:
+      - "SERVER_HOSTNAME=helpdesk.singaren.net.sg"
+      - "SMTP_SERVER=${SMTP_SERVER}"
+      - "SMTP_USERNAME=${SMTP_USERNAME}"
+      - "SMTP_PASSWORD=${SMTP_PASSWORD}"
+    restart: always
 
   jagger:
     image: jagger:v1.8.0

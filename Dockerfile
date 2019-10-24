@@ -37,12 +37,12 @@ RUN apt update && apt upgrade -y && \
     ./install.sh && \
     cd application/config && \
     a2enmod rewrite && \
-    a2enmod headers
+    a2enmod headers && \
+    mv "$PHP_INI_DIR/php.ini-production" "$PHP_INI_DIR/php.ini"
 
 COPY config/config.php /opt/rr3/application/config
 COPY config/config_rr.php /opt/rr3/application/config
 COPY config/database.php /opt/rr3/application/config
-COPY config/email.php /opt/rr3/application/config
 COPY config/memcached.php /opt/rr3/application/config
 COPY config/apache.conf /etc/apache2/sites-available/000-default.conf
 COPY config/apache_security.conf /etc/apache2/conf-available/security.conf

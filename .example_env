@@ -16,6 +16,8 @@ MYSQL_PASSWORD="changeme"
 SMTP_SERVER=smtp_server
 SMTP_USERNAME=smtp@smtp_server
 SMTP_PASSWORD=changeme
+SERVER_HOSTNAME=changeme
+
 
 TZ=Asia/Singapore
 PUID=1000
