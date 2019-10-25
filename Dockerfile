@@ -32,7 +32,6 @@ RUN apt update && apt upgrade -y && \
     mkdir /var/log/rr3 && \
     chown www-data.www-data /var/log/rr3 && \
     chmod 750 /var/log/rr3 && \
-    cp /opt/rr3/application/config/email-default.php /opt/rr3/application/config/email.php && \
     sed -ie "s/$system_path = 'system';/$system_path = '\/opt\/codeigniter\/system';/g" index.php && \
     sed -ie "56i\\\t\$_SERVER['CI_ENV'] = 'production';" index.php && \
     ./install.sh && \
@@ -47,6 +46,7 @@ COPY config/config.php /opt/rr3/application/config
 COPY config/config_rr.php /opt/rr3/application/config
 COPY config/database.php /opt/rr3/application/config
 COPY config/memcached.php /opt/rr3/application/config
+COPY config/email.php /opt/rr3/application/config
 COPY config/apache.conf /etc/apache2/sites-available/000-default.conf
 COPY config/apache_security.conf /etc/apache2/conf-available/security.conf
 COPY scripts /opt/scripts

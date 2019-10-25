@@ -50,3 +50,21 @@ services:
       - ./.env
     restart: always
 
+  jagger-mailer:
+    image: spgreen/jagger:v1.8.0
+    container_name: jagger-mailer
+    command: ["/usr/local/bin/php","/opt/rr3/index.php","gworkers","mailqueuesender"]
+    depends_on:
+      - db
+      - memcached
+      - jagger
+#    Add customised email.php config
+#    volumes:
+#      - "./email-sgaf.php:/opt/rr3/application/config/email.php:ro"
+    env_file:
+      - ./.env
+    restart: always
+
+volumes:
+  db:
+
