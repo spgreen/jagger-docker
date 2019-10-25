@@ -32,10 +32,13 @@ RUN apt update && apt upgrade -y && \
     mkdir /var/log/rr3 && \
     chown www-data.www-data /var/log/rr3 && \
     chmod 750 /var/log/rr3 && \
+    cp /opt/rr3/application/config/email-default.php /opt/rr3/application/config/email.php && \
     sed -ie "s/$system_path = 'system';/$system_path = '\/opt\/codeigniter\/system';/g" index.php && \
     sed -ie "56i\\\t\$_SERVER['CI_ENV'] = 'production';" index.php && \
     ./install.sh && \
     cd application/config && \
+    sed -i "s/Y-m-d H:m:s/Y-m-d H:i:s/g" /opt/rr3/application/models/Invitation.php && \
+    sed -i "s/Y-m-d H:m:s/Y-m-d H:i:s/g" /opt/rr3/application/models/Queue.php && \
     a2enmod rewrite && \
     a2enmod headers && \
     mv "$PHP_INI_DIR/php.ini-production" "$PHP_INI_DIR/php.ini"
